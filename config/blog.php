@@ -8,5 +8,10 @@
 return [
     //添加博客的相关配置
     'title'=>'Frenk的博客',
-    "posts_per_page"=>5
+    "posts_per_page"=>5,
+    'uploads'=>[
+        //定义上传路径
+        'storage'=>'local',
+        'webpath'=>'/uploads',
+    ]
 ];

@@ -140,6 +140,10 @@ return [
         'available'             => '可用的',
         'size'                  => '大小',
         'subtitle'              => '副标题',
+        'file'                  => '文件',
+        'folder'                => '文件夹',
+        'new_folder'            => '新文件夹',
+        'file_name'             => '文件名',
     ],
 
 ];

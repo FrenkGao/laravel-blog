@@ -24,7 +24,13 @@ Route::get('admin',function(){
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'],function(){
     resource('post','PostController');
     resource('tag','TagController',['except'=>'show']);
+    //file uploads
     get('upload','UploadController@index');
+    post('upload/file','UploadController@uploadFile');
+    delete('upload/file','UploadController@deleteFile');
+    post('upload/folder','UploadController@createFolder');
+    delete('upload/folder','UploadController@deleteFolder');
+
 });
 
 //login and logout

@@ -107,7 +107,7 @@ class TagController extends Controller
         }
         $tag->save();
         return redirect("/admin/tag/$id/edit")
-            ->withSuccess("change saved.");
+            ->withSuccess("保存修改!");
     }
 
     /**
@@ -118,6 +118,10 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+
+        return redirect('/admin/tag')
+            ->withSuccess(" '$tag->tag' 标签已经被删除！");
     }
 }
