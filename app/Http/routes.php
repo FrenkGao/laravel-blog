@@ -11,9 +11,7 @@
 |
 */
 //blog pages
-Route::get('/', function () {
-    return redirect('/blog');
-});
+Route::get('/', 'BlogController@index');
 Route::get('blog','BlogController@index');
 
 //admin area
@@ -29,7 +27,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'],funct
     delete('upload/file','UploadController@deleteFile');
     post('upload/folder','UploadController@createFolder');
     delete('upload/folder','UploadController@deleteFolder');
-
 });
 
 //login and logout

@@ -7,11 +7,18 @@
  */
 return [
     //添加博客的相关配置
-    'title'=>'Frenk的博客',
-    "posts_per_page"=>5,
+    'name' => "Frenk Gao",
+    'title'=>'Frenk 的小站',
+    'subtitle' => 'Hi, I am Frenk.',
+    'description' => 'Frenk 博客 hifrenk',
+    'author' => 'FrenkGao',
+    'page_image' => 'home-bg.jpg',
+    'posts_per_page' => 10,
+
     'uploads'=>[
         //定义上传路径
         'storage'=>'local',
         'webpath'=>'/uploads',
     ]
+
 ];

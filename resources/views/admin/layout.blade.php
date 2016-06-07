@@ -7,9 +7,6 @@
 
   <title>{{ config('blog.title') }} 后台管理</title>
 
-{{--  <link href="{{url('/assets/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/css/font-awesome.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">--}}
 
 
   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -45,10 +42,6 @@
 <script src="//cdn.bootcss.com/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.bootcss.com/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
-{{--<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/jquery.dataTables.min.js"></script>
-<script src="/assets/js/dataTables.bootstrap.min.js"></script>--}}
 
 @yield('scripts')
 
