@@ -15,14 +15,13 @@ Route::get('/', function () {
     return redirect('/blog');
 });
 Route::get('blog','BlogController@index');
-Route::get('blog/{slug}','BlogController@showPost');
 
 //admin area
 Route::get('admin',function(){
    return redirect('/admin/post');
 });
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'],function(){
-    resource('post','PostController');
+    resource('post','PostController',['except'=>'show']);
     resource('tag','TagController',['except'=>'show']);
     //file uploads
     get('upload','UploadController@index');
@@ -39,3 +38,4 @@ Route::group(['namespace'=>'Auth','prefix'=>'auth'],function(){
     post('login','AuthController@postLogin');
     get('logout','AuthController@getLogout');
 });
+Route::get('blog/{id}','BlogController@showPost');

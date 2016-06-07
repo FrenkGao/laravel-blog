@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\PostCreateRequest;
+use App\Http\Requests\PostUpdateRequest;
+use App\Jobs\PostFormFields;
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.post.index');
+        return view('admin.post.index')
+            ->withPosts(Post::all());
     }
 
     /**
@@ -26,7 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        
+        $data=$this->dispatch(new PostFormFields());
+        return view('admin.post.create',$data);
     }
 
     /**
@@ -35,22 +41,16 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
-        //
-    }
+        $post=Post::create($request->postFillData());
+        $post->syncTags($request->get('tags',[]));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()
+            ->route('admin.post.index')
+            ->withSuccess('新文章创建成功！');
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +59,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=$this->dispatch(new PostFormFields($id));
+        return view('admin.post.edit',$data);
     }
 
     /**
@@ -69,9 +70,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostUpdateRequest $request, $id)
     {
-        //
+        $post=Post::findOrFail($id);
+        $post->fill($request->postFillData());
+        $post->save();
+        $post->syncTags($request->get('tags',[]));
+
+        if ($request->action==='continue'){
+            return redirect()
+                ->back()
+                ->withSuccess('文章保存成功！');
+        }else{
+            return redirect()
+                ->route('admin.post.index')
+                ->withSuccess('文章保存成功！');
+        }
     }
 
     /**
@@ -82,6 +96,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::findorFail($id);
+        $post->tags()->detach();
+        $post->delete();
+
+        return redirect()
+            ->route('admin.post.index')
+            ->withSuccess('文章已删除！');
     }
 }

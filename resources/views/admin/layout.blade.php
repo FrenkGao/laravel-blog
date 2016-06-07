@@ -7,9 +7,15 @@
 
   <title>{{ config('blog.title') }} 后台管理</title>
 
-  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+{{--  <link href="{{url('/assets/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{url('assets/css/font-awesome.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url('assets/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">--}}
+
+
+  <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
   @yield('styles')
 
 </head>
@@ -34,11 +40,15 @@
 </nav>
 
 @yield('content')
+<script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.bootcss.com/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
-<script src="/assets/js/jquery.min.js"></script>
+{{--<script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/jquery.dataTables.min.js"></script>
-<script src="/assets/js/dataTables.bootstrap.min.js"></script>
+<script src="/assets/js/dataTables.bootstrap.min.js"></script>--}}
 
 @yield('scripts')
 
