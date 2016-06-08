@@ -69,7 +69,7 @@ class Post extends Model {
     }
 
     public function getPublishDateAttribute($value) {
-        return $this->published_at->format('y-n-j');
+        return $this->published_at->format('Y-n-j');
     }
 
     public function getPublishTimeAttribute($value) {

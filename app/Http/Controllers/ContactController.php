@@ -28,7 +28,7 @@ class ContactController extends Controller
                ->replyTo($data['email']);
         });
         return back()
-            ->withSuccess('谢谢你的留言，已经发送成功！');
+            ->withSuccess($data['name'].'，谢谢你的留言，已经发送成功！');
     }
 
 }

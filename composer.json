@@ -10,16 +10,17 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "dflydev/apache-mime-types": "^1.0",
         "doctrine/dbal": "^2.5",
-        "suin/php-rss-writer": "^1.4"
+        "suin/php-rss-writer": "^1.4",
+        "michelf/php-markdown": "^1.6",
+        "michelf/php-smartypants": "1.6.0-beta1"
 
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1",
-        "michelf/php-markdown": "^1.6",
-        "michelf/php-smartypants": "1.6.0-beta1"
+        "phpspec/phpspec": "~2.1"
+
     },
     "autoload": {
         "classmap": [
