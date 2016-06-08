@@ -62,19 +62,9 @@ class TagController extends Controller
         }
         $tag->save();
         return redirect('/admin/tag')
-            ->withSuccess("The tag '$tag->tag' was created");
+            ->withSuccess($tag->tag."标签创建成功");
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

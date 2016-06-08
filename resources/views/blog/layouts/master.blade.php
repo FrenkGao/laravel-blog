@@ -8,7 +8,8 @@
     <meta name="author" content="{{ config('blog.author') }}">
 
     <title>{{ $title or config('blog.title') }}</title>
-
+    <link rel="alternate" type="application/rss+xml" href="{{ url('rss') }}"
+          title="RSS Feed {{ config('blog.title') }}">
     {{-- Styles --}}
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">

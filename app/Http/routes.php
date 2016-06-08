@@ -36,3 +36,11 @@ Route::group(['namespace'=>'Auth','prefix'=>'auth'],function(){
     get('logout','AuthController@getLogout');
 });
 Route::get('blog/{id}','BlogController@showPost');
+//contact
+Route::get('contact','ContactController@showForm');
+Route::post('contact','ContactController@sendContactInfo');
+
+//rss路由
+Route::get('rss','BlogController@rss');
+//站点地图
+get('sitemap.xml', 'BlogController@siteMap');

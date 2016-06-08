@@ -144,6 +144,8 @@ return [
         'folder'                => '文件夹',
         'new_folder'            => '新文件夹',
         'file_name'             => '文件名',
+        'message'               => '留言',
+        'tag'                   => '标签'
     ],
 
 ];

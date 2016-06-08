@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Jobs\BlogIndexData;
 use App\Post;
+use App\Services\RssFeed;
+use App\Services\SiteMap;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -28,6 +30,20 @@ class BlogController extends Controller
         if ($tag){
             $tag=Tag::whereTag($tag)->firstOrFail();
         }
-        return view($post->layout,compact('post','tag'));
+        $isArticles=true;
+        return view($post->layout,compact('post','tag','isArticles'));
+    }
+
+    public function rss(RssFeed $feed) {
+        $rss=$feed->getRSS();
+        return response($rss)
+            ->header('Content-type', 'application/rss+xml');
+    }
+
+    public function siteMap(SiteMap $siteMap) {
+        $map = $siteMap->getSiteMap();
+
+        return response($map)
+            ->header('Content-type', 'text/xml');
     }
 }

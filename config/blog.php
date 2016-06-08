@@ -14,11 +14,12 @@ return [
     'author' => 'FrenkGao',
     'page_image' => 'home-bg.jpg',
     'posts_per_page' => 10,
-
+    'rss_size'=>25,
     'uploads'=>[
         //定义上传路径
         'storage'=>'local',
         'webpath'=>'/uploads',
-    ]
+    ],
+    'contact_email'=>'tsgaozhipeng@163.com'
 
 ];
