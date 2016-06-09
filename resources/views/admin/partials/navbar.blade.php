@@ -23,7 +23,9 @@
                 {{ Auth::user()->name }}
                 <span class="caret"></span>
             </a>
+
             <ul class="dropdown-menu" role="menu">
+                <li><a href="{{url("/admin/modify")}}">修改信息</a></li>
                 <li><a href="/auth/logout">登出</a></li>
             </ul>
         </li>

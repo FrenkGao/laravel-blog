@@ -23,7 +23,7 @@
                     </li>
                 </ul>
                 <p class="copyright" style="color:#ccc;">Copyright © <a style="color:#ccc;"
-                                                                        href="http://hirenk.cn">{{ config('blog.author') }}</a>
+                                                                        href="http://hifrenk.cn">{{ config('blog.author') }}</a>
                     | <a style="color:#ccc;" href="http://www.miitbeian.gov.cn">闽ICP备16014386号-1</a>
                 </p>
             </div>

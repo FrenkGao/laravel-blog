@@ -11,8 +11,7 @@
         "dflydev/apache-mime-types": "^1.0",
         "doctrine/dbal": "^2.5",
         "suin/php-rss-writer": "^1.4",
-        "michelf/php-markdown": "^1.6",
-        "michelf/php-smartypants": "1.6.0-beta1"
+        "michelf/php-markdown": "^1.6"
 
     },
     "require-dev": {

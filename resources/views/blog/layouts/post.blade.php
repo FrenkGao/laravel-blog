@@ -39,6 +39,7 @@
     </article>
 
     {{-- The Pager --}}
+
     <div class="container">
         <div class="row">
             <ul class="pager">

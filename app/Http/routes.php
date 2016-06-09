@@ -27,14 +27,18 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth'],funct
     delete('upload/file','UploadController@deleteFile');
     post('upload/folder','UploadController@createFolder');
     delete('upload/folder','UploadController@deleteFolder');
+    //modify password & name
+    get('modify','UserController@modifyPassword');
+    post('modify','UserController@updatePassword');
 });
 
-//login and logout
-Route::group(['namespace'=>'Auth','prefix'=>'auth'],function(){
-    get('login','AuthController@getLogin');
-    post('login','AuthController@postLogin');
-    get('logout','AuthController@getLogout');
-});
+//auth and password
+Route::controllers([
+    'auth'=>'Auth\AuthController',
+    'password'=>'Auth\PasswordController'
+]);
+
+
 Route::get('blog/{id}','BlogController@showPost');
 //contact
 Route::get('contact','ContactController@showForm');

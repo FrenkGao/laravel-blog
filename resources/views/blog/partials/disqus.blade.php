@@ -1,4 +1,7 @@
-
+<style>
+  .ds-sync{display:none !important;}
+  #ds-thread #ds-reset .ds-powered-by{display:none;}
+</style>
 <div class="ds-thread" data-thread-key="{{$post->id }}" data-title="{{$post->title }}" data-url="http://hifrenk.cn/blog/{{ $post->id  }}"></div>
 
 

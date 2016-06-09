@@ -12,8 +12,9 @@
                         @include('admin.partials.success')
 
                         <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('/auth/login') }}">
+                              action="{{ url('/password/reset') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">邮箱</label>
@@ -31,19 +32,15 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> 记住我
-                                        </label>
-                                    </div>
+                                <label class="col-md-4 control-label">重复密码</label>
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control" name="password_confirmation">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">登录</button>
-                                    <a class="btn btn-link" href="{{ url('/password/email') }}">忘记密码？</a>
+                                    <button type="submit" class="btn btn-primary">确定修改</button>
                                 </div>
                             </div>
                         </form>
