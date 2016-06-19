@@ -4,16 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model {
+class Tag extends Model
+{
     protected $fillable = [
-        'tag', 'title', 'subtitle', 'page_image', 'meta_description', 'reverse_direction',
-    ];//可以直接修改的列
+        'tag',
+        'title',
+        'subtitle',
+        'page_image',
+        'meta_description',
+        'reverse_direction',
+    ];//批量赋值，即create 可以直接修改的列
 
     /**
      * 定义文章与标签之间多对多的关系
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function posts() {
+    public function posts()
+    {
         return $this->belongsToMany('App\Post', 'post_tag_pivot');
     }
 
@@ -21,7 +28,8 @@ class Tag extends Model {
      * 将数据库中没有的tags创建出来
      * @param array $tags
      */
-    public static function addNeededTags(array $tags) {
+    public static function addNeededTags(array $tags)
+    {
         if (count($tags) === 0) {
             return;
         }
@@ -37,11 +45,12 @@ class Tag extends Model {
                 'reverse_direction' => false,
             ]);
         }
-
     }
 
-    public static function layout($tag, $default = 'blog.layouts.index') {
-        $layout=static::whereTag($tag)->pluck('layout');
-        return $layout ?:$default;
+    public static function layout($tag, $default = 'blog.layouts.index')
+    {
+        $layout = static::whereTag($tag)->pluck('layout');
+
+        return $layout ?: $default;
     }
 }

@@ -48,3 +48,4 @@ Route::post('contact','ContactController@sendContactInfo');
 Route::get('rss','BlogController@rss');
 //站点地图
 get('sitemap.xml', 'BlogController@siteMap');
+

@@ -26,7 +26,7 @@ class UploadFileRequest extends Request
         return [
             'file'=>'required',
             'folder'=>'required',
-            'file_name'=>'regex:/^[a-zA-z0-9]+\.[a-zA-z]+$/',
+            
         ];
     }
 }

@@ -24,9 +24,9 @@ class TagUpdateRequest extends Request
     public function rules()
     {
         return [
-            'title'=>'required',
-            'subtitle'=>'required',
-            'layout'=>'required',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'layout' => 'required',
         ];
     }
 }

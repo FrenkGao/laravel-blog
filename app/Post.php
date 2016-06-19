@@ -16,28 +16,6 @@ class Post extends Model {
         return $this->belongsToMany('App\Tag', 'post_tag_pivot');
     }
 
-/*    //不在需要设置slug了
-    //自动将title填充为slug
-    public function setTitleAttribute($value) {
-        $this->attributes['title'] = $value;
-
-        if (!$this->exists) {
-            $this->attributes['slug'] = str_slug($value);
-        }
-    }
-
-    protected function setUniqueSlug($title, $extra) {
-        $slug = str_slug($title . '-' . $extra);
-
-        if (static::whereSlug($slug)->exists()) {
-            $this->setUniqueSlug($title, $extra + 1);
-
-            return;
-        } else {
-            $this->attributes['slug'] = $slug;
-        }
-    }*/
-
     /**
      * 将MarkDown转换成html
      * @param $value
@@ -121,7 +99,6 @@ class Post extends Model {
                 $q->where('tag', '=', $tag->tag);
             });
         }
-
         return $query->first();
     }
 

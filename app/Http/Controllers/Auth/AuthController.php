@@ -21,7 +21,7 @@ class AuthController extends Controller
     |
     */
     protected $redirectAfterLogout='/auth/login';//定义登出后转跳页面
-    protected $redirectTo='/admin/post';//定义登录后的页面
+    protected $redirectPath='/admin/post';//登录后的网址
 
     use AuthenticatesUsers, ThrottlesLogins;//我们移除了 AuthenticateAndRegistersUsers trait，因为我们的应用不允许普通用户注册。
 

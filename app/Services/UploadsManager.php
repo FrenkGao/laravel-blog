@@ -22,6 +22,7 @@ class UploadsManager {
     }
 
     /**
+     * 文件夹详情
      * @param $folder
      * @return array
      */
@@ -29,7 +30,7 @@ class UploadsManager {
         $folder = $this->cleanFolder($folder);//清理文件名
 
         $breadcrumbs = $this->breadcrumbs($folder);
-        $slice = array_slice($breadcrumbs, - 1);
+        $slice = array_slice($breadcrumbs, - 1);//去除最后一个
         $folderName = current($slice);
         $breadcrumbs = array_slice($breadcrumbs, 0, - 1);
 
@@ -48,7 +49,6 @@ class UploadsManager {
             'folderName',//当前目录的名字
             'breadcrumbs',//导航栏
             'subfolders',//当前目录的子目录
-
             'files'//当前目录的所有文件
         );
 
@@ -80,6 +80,11 @@ class UploadsManager {
         return $crumbs;
     }
 
+    /**
+     * 文件详情
+     * @param $path
+     * @return array
+     */
     public function fileDetails($path) {
         $path = '/' . ltrim($path, '/');
 
@@ -135,17 +140,27 @@ class UploadsManager {
         );
     }
 
+    /**
+     * 创建文件夹
+     * @param $folder
+     * @return string
+     */
     public function createDirectory($folder) {
         $folder = $this->cleanFolder($folder);
 
         if ($this->disk->exists($folder)) {
-            return "Folder $folder already exists.";
+            return "「$folder」文件夹已经存在！";
         } else {
             return $this->disk->makeDirectory($folder);
         }
 
     }
 
+    /**
+     * 删除文件夹，先要判断文件夹是否为空
+     * @param $folder
+     * @return string
+     */
     public function deleteDirectory($folder) {
         $folder = $this->cleanFolder($folder);
 
@@ -155,7 +170,7 @@ class UploadsManager {
 
         );
         if (!empty($filesFolders)) {
-            return "Directory must be empty to delete it";
+            return "文件夹必须为空才能删除！";
         } else {
             return $this->disk->deleteDirectory($folder);
         }
@@ -164,19 +179,30 @@ class UploadsManager {
     }
 
 
+    /**
+     * 根据完整路径删除文件
+     * @param $path
+     * @return string
+     */
     public function deleteFile($path) {
         $path = $this->cleanFolder($path);
         if (!$this->disk->exists($path)) {
-            return 'File does not exit.';
+            return '文件不存在！';
         } else {
             return $this->disk->delete($path);
         }
     }
 
+    /**
+     * 保存文件，将文件保存在指定的文件夹中，传进来的是，包含路径的完整文件名
+     * @param $path
+     * @param $content
+     * @return string
+     */
     public function saveFile($path, $content) {
         $path = $this->cleanFolder($path);
         if ($this->disk->exists($path)) {
-            return 'File already exit.';
+            return '文件已经存在！';
         } else {
             return $this->disk->put($path, $content);
         }

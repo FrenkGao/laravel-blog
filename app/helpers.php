@@ -12,12 +12,28 @@ function human_filesize($bytes, $decimals = 2) {
     return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) ." ". $size[$factor];
 }
 
+/**
+ * @param $mimeType
+ * @return bool
+ */
 function is_image($mimeType) {
     return starts_with($mimeType, 'image/');
 }
+
+/**
+ * 用于在视图的复选框和单选框中设置 checked 属性。
+ * @param $value
+ * @return string
+ */
 function checked($value) {
     return $value? 'checked':'';
 }
+
+/**
+ * 返回上传图片的完整路径。
+ * @param null $value
+ * @return mixed|null|string
+ */
 function page_image($value=null){
     if (empty($value)){
         $value=config('blog.page_image');
